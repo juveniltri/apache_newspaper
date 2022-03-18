@@ -1,0 +1,43 @@
+.ad {
+    text-align: center;
+    flex-grow: 1;
+}
+
+.ad-minimal {
+    max-width: 49%;
+}
+
+.ad-title {
+    background-color: #EBEBEC;
+    border-top: 1px solid #84B4D2;
+    border-bottom: 1px solid #84B4D2;
+}
+
+.ad-subtitle {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.ad-img {
+    width: 100%;
+}
+
+.ad-footer {
+    display: flex;
+    color: gray;
+    margin-bottom: 0;
+    font-style: oblique;
+    justify-content: space-between;
+}
+
+.ad-footer p {
+    margin-bottom: 2px;
+}
+
+.ad-notice {
+    margin: 0;
+    text-align: left;
+}

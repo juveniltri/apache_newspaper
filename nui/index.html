@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NewsPaper</title>
+	<link rel="stylesheet" type="text/css" href="assets/style/style.css">
+	<link rel="stylesheet" href="assets/style/font-awesome/css/all.css">
+	<script src="assets/scripts/script.js"></script>
+	<script src="assets/scripts/utils.js"></script>
+	<script src="assets/scripts/domElements.js"></script>
+	<script src="assets/scripts/cliendServer.js"></script>
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	<!-- Mocked values -->
+	<script src="assets/mock/ad.js"></script>
+	<script src="assets/mock/announcements.js"></script>
+</head>
+<body>
+    <div class="periodico">
+		<i class="fas fa-window-close close-btn fa-2x" 
+		aria-hidden="true"
+		onClick="NewsPaper.closeDocument()"
+		></i>
+		<div class="container">
+			
+			<div class="info flex-6">
+				<div class="flex">
+					<div id="announcements"
+						class="flex-1 flex mr-20px flex-direction_column"
+					>
+						<h1 class="text-align-center flex-0">ANUNCIOS</h1>
+						<div id="announcements-container" 
+							class="announcement-container"
+						></div>
+					</div>
+					<div class="flex-6 text-align-center main-container">
+						<div>
+							<p id="formatedDate" class="m-0 gray text-align-left padding-0_5rem">Martes 13 de Abril</p>
+							<h1 class="title m-0">LOS AIRES DEL NORTE</h1>
+							<h2 class="m-0">EL PERIÓDICO LIDER EN SAN ANDREAS</h1>
+						</div>
+						<div class="navbar">
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav mr-auto justify-content_space-between">
+								<li class="nav-item active">
+									<a class="nav-link" href="#">ACTUALIDAD</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="#">NEGOCIOS</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" href="#">EL MATUTINO TV</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" href="#">REPORTAJES</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" href="#">EVENTOS</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" href="#">DEPORTES</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+						<div class="flex">
+							<div class="flex-2 padding-1_5rem">
+								<hr class="width-100 height-0 border-black-2px">
+								<div id="adColumn1"
+									class="flex justify-content_space-between flex-flow_row-wrap"
+								>
+								</div>
+							</div>
+							<div class="flex-1 padding-1_5rem">
+								<hr class="width-100 height-0">
+								<div id="adColumn2"
+									class="flex justify-content_space-between flex-flow_row-wrap"
+								>
+								</div>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="redaccion">
+		<i class="fas fa-window-close close-btn fa-2x" 
+		aria-hidden="true"
+		onClick="NewsPaper.closeDocument()"
+		></i>
+		<div class="container">
+			
+			<div class="info flex-6">
+				<div class="flex">
+					<div class="flex-6 text-align-center main-container">
+						<div>
+							<p id="formatedDate" class="m-0 gray text-align-left padding-0_5rem">Martes 13 de Abril</p>
+							<h1 class="title m-0">LOS AIRES DEL NORTE</h1>
+							<h2 class="m-0">EL PERIÓDICO LIDER EN SAN ANDREAS</h1>
+						</div>
+						<div class="navbar">
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav mr-auto justify-content_space-between">
+								<li class="nav-item active">
+									<a class="nav-link" onClick="NewsPaper.openwindows('newnoti')">Nueva noticia</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" onClick="NewsPaper.openwindows('newad')">Nuevo anuncio</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" onClick="NewsPaper.openwindows('editnoti')">Administrar titulares</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" onClick="NewsPaper.openwindows('editad')">Administrar Ads</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link disabled" onClick="NewsPaper.ChangeToNewspaper()">Ver periodico</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+						<div class="flex">
+							<div class="newnoti">
+								<div id="noticia" class="edicionperiodico">
+									<form class="well form-horizontal" id="contact_form">
+										<fieldset>
+					
+											<!-- Form Name -->
+											<legend>Publique la noticia requerida!</legend>
+					
+											<!-- Types -->
+					
+											<div class="form-group">
+												<label class="col-md-4 control-label">Tipo de noticia</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+														<select class="form-control" id="tipo">
+															<option value="ACTUALIDAD">ACTUALIDAD</option>
+															<option value="NEGOCIOS">NEGOCIOS</option>
+															<option value="MATUTINO">MATUTINO</option>
+															<option value="REPORTAJES">REPORTAJES</option>
+															<option value="EVENTOS">EVENTOS</option>
+															<option value="DEPORTES">DEPORTES</option>
+														</select>	
+													</div>
+												</div>
+											</div>
+					
+											<!-- Text input-->
+					
+											<div class="form-group">
+												<label class="col-md-4 control-label">Titulo</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+														<input id="title" name="title" placeholder="Titular" class="form-control"  type="text" required maxlength="50">
+													</div>
+												</div>
+											</div>
+					
+											<!-- Text area -->
+					
+											<div class="form-group">
+												<label class="col-md-4 control-label">Nota de prensa</label>
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+														<textarea id="comment" class="form-control" name="comment" placeholder="Escriba su noticia aqui" required maxlength="1500" minlength="300"></textarea>
+													</div>
+												</div>
+											</div>
+					
+											<!-- Text input-->
+											<div class="form-group">
+												<label class="col-md-4 control-label">Imagen</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+														<input id="image" name="image" placeholder="Imagen de la noticia" class="form-control" type="text" required>
+													</div>
+												</div>
+											</div>
+					
+											<!-- Button -->
+											<div class="form-group">
+												<label class="col-md-4 control-label"></label>
+												<div class="col-md-4">
+													<button id="submit1" onclick="enviarNoti()">Enviar</button>
+												</div>
+											</div>
+					
+										</fieldset>
+									</form>
+								</div>
+							</div>
+							<div class="newad">
+								<div id="anuncio" class="edicionperiodico">
+									<form class="well form-horizontal" id="contact_form">
+										<fieldset>
+					
+											<!-- Form Name -->
+											<legend>Publique La campaña publicitaria requerida!</legend>
+					
+											<!-- Text input-->
+					
+											<div class="form-group">
+												<label class="col-md-4 control-label">Nota de anuncio</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+														<input id="title1" name="title" placeholder="Empresa" class="form-control"  type="text" maxlength="250">
+													</div>
+												</div>
+											</div>
+					
+											<!-- Text input-->
+											<div class="form-group">
+												<label class="col-md-4 control-label">Imagen</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+														<input id="image1" name="image" placeholder="Imagen del anunciante" class="form-control" type="text">
+													</div>
+												</div>
+											</div>
+					
+											<!-- Text input-->
+					
+											<div class="form-group">
+												<label class="col-md-4 control-label">Fecha finalizacion</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+														<input type="datetime-local" id="finaldate"
+																name="finaldate" value="2018-06-12T19:30"
+																min="2018-06-07T00:00" max="2250-06-14T00:00">
+													</div>
+												</div>
+											</div>
+					
+											<!-- Text input-->
+					
+											<div class="form-group">
+												<label class="col-md-4 control-label">Prioridad</label>  
+												<div class="col-md-4 inputGroupContainer">
+													<div class="input-group">
+														<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+														<label for="priority">Elige una prioridad:</label>
+					
+														<select id="priority" name="cars">
+															<option value="0">0 - Minima prioridad</option>
+															<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4 - Maxima prioridad</option>
+														</select>
+													</div>
+												</div>
+											</div>
+					
+											<!-- Button -->
+											<div class="form-group">
+												<label class="col-md-4 control-label"></label>
+												<div class="col-md-4">
+													<button id="submit1" onclick="enviarAd()">Enviar</button>
+												</div>
+											</div>
+					
+										</fieldset>
+									</form>
+								</div>
+							</div>
+							<div class="editnoti">
+								<form class="well form-horizontal" id="contact_form">
+									<fieldset>
+				
+										<!-- Form Name -->
+										<legend>Indica la ID de las noticias que quieres borrar</legend>
+				
+										<!-- Types -->
+				
+										<div class="form-group">
+											<label class="col-md-4 control-label">ID</label>  
+											<div class="col-md-4 inputGroupContainer">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+													<input type="number" id="iddelete" name="iddelete" min="0" max="100000">
+												</div>
+											</div>
+										</div>
+
+										<!-- Button -->
+										<div class="form-group">
+											<label class="col-md-4 control-label"></label>
+											<div class="col-md-4">
+												<button id="submit1" onclick="deleteNoti()">Enviar</button>
+											</div>
+										</div>
+				
+									</fieldset>
+								</form>
+								
+								<table class="table table-striped">
+									<thead>
+									  <tr>
+										<th>Tipo</th>
+										<th>Titulo</th>
+										<th>Reportero</th>
+										<th>Nota prensa</th>
+										<th>Imagen</th>
+										<th>ID</th>
+									  </tr>
+									</thead>
+									<tbody id="tablanoti">
+
+									</tbody>
+								</table>
+							</div>
+							<div class="editad">
+								<form class="well form-horizontal" id="contact_form">
+									<fieldset>
+				
+										<!-- Form Name -->
+										<legend>Indica la ID de las noticias que quieres borrar</legend>
+				
+										<!-- Types -->
+				
+										<div class="form-group">
+											<label class="col-md-4 control-label">ID</label>  
+											<div class="col-md-4 inputGroupContainer">
+												<div class="input-group">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+													<input type="number" id="iddelete2" name="iddelete2" min="0" max="100000">
+												</div>
+											</div>
+										</div>
+
+										<!-- Button -->
+										<div class="form-group">
+											<label class="col-md-4 control-label"></label>
+											<div class="col-md-4">
+												<button id="submit1" onclick="deleteAd()">Enviar</button>
+											</div>
+										</div>
+				
+									</fieldset>
+								</form>
+								
+								<table class="table table-striped">
+									<thead>
+									  <tr>
+										<th>Texto</th>
+										<th>Imagen</th>
+										<th>ID</th>
+									  </tr>
+									</thead>
+									<tbody id="tablaads">
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

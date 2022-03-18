@@ -1,0 +1,63 @@
+.container {
+	display: flex;
+	height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+	flex: 0;
+    min-width: 10%;
+	background-color: #034323;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+	color: white;
+	padding: 1.5rem;
+}
+
+.main-container {
+    overflow: auto;
+    height: 95vh;
+}
+
+.info {
+	flex: 6;
+}
+
+.selected {
+	color: white;
+	font-weight: bold;
+}
+
+.info {
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+    padding: 2rem;
+}
+
+.title {
+	font-size: 8em;
+}
+
+.announcement-container {
+    overflow: auto;
+    max-height: 80vh;
+}
+
+.footer-dev-by {
+    font-size: 10px;
+    text-align: right;
+    color: white;
+}
+
+#periodico {
+    background-color: #f1d2b3;
+    display: none;
+}
+
+#newnoti #newad #editnoti #editad {
+    display: none;
+}
